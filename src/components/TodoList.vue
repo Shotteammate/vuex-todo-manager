@@ -27,11 +27,16 @@ export default {
 </script>
 
 <style scoped>
+div h3 {
+  margin-top: 0px;
+}
+
 .todolist {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
 }
+
 .todo {
   border: 1px solid #ccc;
   background: #41b883;
