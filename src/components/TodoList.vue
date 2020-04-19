@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>todo list</h3>
+    <h3>Todo List</h3>
     <div class="todolist">
       <TodoItem v-for="todo in allTodos" :key="todo.id" class="todo" :todo="todo" />
     </div>
@@ -21,7 +21,7 @@ export default {
     ...mapActions(["fetchTodos"])
   },
   created() {
-    this.fetchTodos()
+    this.fetchTodos();
   }
 };
 </script>
