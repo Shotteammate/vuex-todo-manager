@@ -1,8 +1,23 @@
 <template>
   <div>
     <h3>Todo List</h3>
+    <div class="legend">
+      <span>Double click to mark as complete</span>
+      <span class="legendGuide">
+        <span class="incomplete-box"></span> = Incomplete
+      </span>
+      <span class="legendGuide">
+        <span class="complete-box"></span> = Complete
+      </span>
+    </div>
     <div class="todolist">
-      <TodoItem v-for="todo in allTodos" :key="todo.id" class="todo" :todo="todo" />
+      <TodoItem
+        v-for="todo in allTodos"
+        :key="todo.id"
+        class="todo"
+        :class="{'is-complete': !todo.completed}"
+        :todo="todo"
+      />
     </div>
   </div>
 </template>
@@ -45,5 +60,39 @@ div h3 {
   text-align: center;
   position: relative;
   cursor: pointer;
+}
+
+.legend {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.legendGuide {
+  margin-left: 20px;
+}
+
+.complete-box {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #35495e;
+}
+
+.incomplete-box {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #41b883;
+}
+
+.is-complete {
+  background: #35495e;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .todolist {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

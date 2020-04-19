@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @dblclick="onDblClick(todo)">
     {{todo.title}}
     <i @click="removeTodo(todo.id)" class="fas fa-trash-alt"></i>
   </div>
@@ -16,9 +16,18 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["deleteTodo"]),
+    ...mapActions(["deleteTodo", "updateTodo"]),
     removeTodo(id) {
       this.deleteTodo(id);
+    },
+    onDblClick(todo) {
+      const updTodo = {
+        id: todo.id,
+        title: todo.title,
+        completed: !todo.completed
+      };
+
+      this.updateTodo(updTodo);
     }
   }
 };
